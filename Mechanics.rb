@@ -32,8 +32,9 @@ class Mechanics
 
   def game_start
     puts "Welcome to Defeat the Dragon Online!"
+    puts "Type \'e\',  \'exit\',  \'q\', or \'quit\' to stop the game."
+    puts "Press the \"Enter\" key to advance the story dialogue."
     puts "Are you a returning player? (y/n)"
-    puts " Type \'e\',  \'exit\',  \'q\', or \'quit\' to stop the game."
     @@response = gets.chomp
       if @@response.to_s == 'yes' || @@response.to_s == 'y'
         @@returning_player = true
@@ -63,13 +64,18 @@ class Mechanics
 
     if @@returning_player == true && @@gameState == true
       puts( greetings[randomGreeting].to_s.capitalize + " " + @@player_name + "!" )
+      gets
       puts( "Your current level is: " + @@player_level.to_s + "." )
+      gets
 
     elsif (@@returning_player == false && @@gameState == true) && @@player_name != ""
       @@returning_player = false;
       puts( "I welcome you " + @@player_name +  ", to Defeat the Dragon Online!" )
+      gets
       puts( "In order to defeat the dragon you must first prove yourself by defeating two minibosses!" )
+      gets
       puts( "Your current level is: " + @@player_level.to_s + "." )
+      gets
     end
 
   end
@@ -81,17 +87,21 @@ class Mechanics
     # *************Start of First Layer**************
     if @@response == "y" || @@response == "yes"
       puts "Ho ho!"
+      gets
       puts "A mighty one, indeed!"
+      gets
 
     elsif @@response == "n" || @@response == "no"
       # *************Start of Second Layer**************
       if @@counter == 0
         puts "Hm?"
         @@counter += 1
+        gets
         first_confirmation()
       elsif @@counter == 1
         puts "Say that again. I dare ye..."
         @@counter += 1
+        gets
         first_confirmation()
       elsif @@counter == 2
         puts "Are you sure?"
@@ -103,20 +113,29 @@ class Mechanics
           # *************Start of Fourth Layer**************
           if @@response == "y" || @@response == "yes"
             puts "YOU COWARD!!!"
+            gets
             puts "TAKE THIS YA PATUNIA!"
+            gets
             puts "------"
+            gets
             puts "You are dead."
+            gets
             puts "Cause of death: cowardliness"
+            gets
             puts"\n\n"
             gameStart()
           else
             puts "'Tis alright. Thou art just bewildered.'"
+            gets
             puts "Let\'s begin!"
+            gets
           end
           # *************End of Fourth Layer**************
         else
           puts "'Tis alright. Thou art just bewildered.'"
+          gets
           puts "Let\'s begin!"
+          gets
         end
         # *************End of Third Layer**************
       end
@@ -138,14 +157,30 @@ class Mechanics
   def first_boss_prologue
     if @@exited_game == false && @@level_counter == 0
       puts "Thou art wondering, \"Who art thou?\""
+      gets
       puts "Well #{@@player_name}, I am known as: Narrator."
-      puts "Narrator: "
+      gets
+      puts "Narrator: I do just as I am named. I narrate."
+      gets
+      puts "Listen up, you are up against a, \"Crazy Wolf\" with 300 HP."
+      gets
+      puts "He has an aggresive play style and can withstand critical damage."
+      gets
+      puts "#{@@player_name}, you are going to need to discover what is the best method to defeat this miniboss."
+      gets
+      puts "Do so, and you will be ever closer to saving your beloved village."
+      gets
+      puts "You may choose to: Attack, Block, Heal, or ??? "
+      gets
+      puts "May you prevail..."
+      gets
     end
   end
 
   def first_boss_battle
     if @@exited_game == false && @@level_counter == 0
-      puts "First Boss code placeholder..."
+      puts "BATTLE START!"
+      gets
     end
   end
 
