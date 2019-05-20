@@ -5,6 +5,8 @@ class Mechanics
   # Game Variables
   @@bosses_defeated = 0
   @@counter = 0
+  @@level_counter = 0
+  @@exited_game = false;
   @@gameState = false
   @@response = ""
 
@@ -23,7 +25,12 @@ class Mechanics
 
   # ------------------Log In Dialogue------------------------------
 
-  def gameStart
+  def game_exit
+    puts "exiting... Thanks for playing!"
+    @@exited_game = true
+  end
+
+  def game_start
     puts "Welcome to Defeat the Dragon Online!"
     puts "Are you a returning player? (y/n)"
     puts " Type \'e\',  \'exit\',  \'q\', or \'quit\' to stop the game."
@@ -36,11 +43,11 @@ class Mechanics
         @@gameState = true
       elsif @@response.to_s == "e" || @@response.to_s == "exit" || @@response.to_s == "q" || @@response.to_s == "quit"
         @@gameState = false
-        puts "exiting... Thanks for playing!"
+        game_exit()
       else
         puts "I\'m sorry I could not comprehend that. Could you reword that please?"
         puts "---"
-        gameStart()
+        game_start()
       end
   end
 
@@ -114,6 +121,8 @@ class Mechanics
         # *************End of Third Layer**************
       end
       # *************End of Second Layer**************
+    elsif @@response == "e" ||  @@response == "exit" || @@response == "q" || @@response == "quit"
+      game_exit()
     else
       puts "What are you saying lad? I can\'t understand you!"
       first_confirmation()
@@ -125,16 +134,64 @@ class Mechanics
 
   # -------------------Boss Dialogues--------------------
 
-  def first_boss
-
+  # ----------First Boss-----------
+  def first_boss_prologue
+    if @@exited_game == false && @@level_counter == 0
+      puts "Thou art wondering, \"Who art thou?\""
+      puts "Well #{@@player_name}, I am known as: Narrator."
+      puts "Narrator: "
+    end
   end
 
-  def second_boss
-
+  def first_boss_battle
+    if @@exited_game == false && @@level_counter == 0
+      puts "First Boss code placeholder..."
+    end
   end
 
-  def final_boss
+  def first_boss_epilogue
+    if @@exited_game == false && @@level_counter == 0
+      puts "First Boss code placeholder..."
+    end
+  end
 
+  # ----------Second Boss-----------
+
+  def second_boss_prologue
+    if @@exited_game == false && @@level_counter == 1
+      puts "Second Boss code placeholder..."
+    end
+  end
+
+  def second_boss_battle
+    if @@exited_game == false && @@level_counter == 1
+      puts "Second Boss code placeholder..."
+    end
+  end
+
+  def second_boss_epilogue
+    if @@exited_game == false && @@level_counter == 2
+      puts "Second Boss code placeholder..."
+    end
+  end
+
+  # ----------Final Boss-----------
+  def final_boss_prologue
+    if @@exited_game == false && @@level_counter == 2
+      puts "Final Boss code placeholder..."
+    end
+  end
+
+  def final_boss_battle
+    if @@exited_game == false && @@level_counter == 2
+      puts "Final Boss code placeholder..."
+    end
+  end
+
+  def final_boss_epilogue
+    if @@exited_game == false && @@level_counter == 3
+      puts "Final Boss code placeholder..."
+    end
   end
 
 end
