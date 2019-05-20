@@ -1,10 +1,10 @@
-require './Game'
+require './Mechanics'
 
-class RunGame < Game
+class RunGame < Mechanics
 
 end
 
-theGame = RunGame.new(1, 100, false)
+theGame = Mechanics.new()
 theGame.gameStart
 theGame.greet
 theGame.first_confirmation

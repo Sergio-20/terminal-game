@@ -1,5 +1,5 @@
-require './Game'
-class SaveLoad < Game
+require './RunGame'
+class SaveLoad < RunGame
 
   def load_game
 
