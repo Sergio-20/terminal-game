@@ -24,7 +24,7 @@ class Player < Mechanics
         @@is_player_turn = false
         if @@player_attack_streak == 4
           @@enemy_hp = (@@enemy_hp).abs - ( ( (@@enemy_hp * 100) / @@enemy_hp_original ).ceil * 2 ).abs
-          @@player_attack_streak = 0
+          @@player_attack_streak = 0 
         else
           @@enemy_hp = @@enemy_hp - ( (@@enemy_hp * 100) / @@enemy_hp_original ).ceil
           @@player_attack_streak += 1
@@ -54,7 +54,7 @@ class Player < Mechanics
         else
           puts "Your health is already max!"
           gets
-          user_abilities()  
+          user_abilities()
         end
       elsif choice == "???"
         if @@bosses_defeated == 2 && @@player_hp == 1
