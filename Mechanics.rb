@@ -1,19 +1,21 @@
 class Mechanics
 
-  attr_accessor :player_name, :player_level, :player_hp, :returning_player, :enemy_name, :enemy_level, :enemy_hp, :gameState, :response, :counter
+  attr_accessor(:player_name, :player_level, :player_hp, :returning_player, :is_player_turn, :enemy_name,
+     :enemy_level, :enemy_hp, :gameState, :response, :counter)
 
   # Game Variables
   @@bosses_defeated = 0
   @@counter = 0
-  @@level_counter = 0
   @@exited_game = false;
   @@gameState = false
+  @@level_counter = 0
+  @@is_player_turn = true
   @@response = ""
 
   # Enemy Variables
-  @@enemy_hp = 0
-  @@enemy_level = 0
-  @@enemy_name = ""
+  @@enemy_hp = 100
+  @@enemy_level = 10
+  @@enemy_name = "enemy"
 
   # Player Variables
   @@player_hp = 100
@@ -23,7 +25,7 @@ class Mechanics
 
   # ---------------------Methods----------------------
 
-  # ------------------Log In Dialogue------------------------------
+  # ------------------LogIn Dialogue------------------------------
 
   def game_exit
     puts "exiting... Thanks for playing!"
@@ -123,7 +125,9 @@ class Mechanics
             puts "Cause of death: cowardliness"
             gets
             puts"\n\n"
-            gameStart()
+            game_start()
+            greet()
+            first_confirmation()
           else
             puts "'Tis alright. Thou art just bewildered.'"
             gets
@@ -150,7 +154,6 @@ class Mechanics
 
   end
 
-
   # -------------------Boss Dialogues--------------------
 
   # ----------First Boss-----------
@@ -162,17 +165,27 @@ class Mechanics
       gets
       puts "Narrator: I do just as I am named. I narrate."
       gets
-      puts "Listen up, you are up against a, \"Crazy Wolf\" with 300 HP."
+      puts "Narrator: Listen up, you are up against a, \"Crazy Wolf\" with 300 HP."
       gets
-      puts "He has an aggresive play style and can withstand critical damage."
+      puts "Narrator: He has an aggresive play style and can withstand critical damage."
       gets
-      puts "#{@@player_name}, you are going to need to discover what is the best method to defeat this miniboss."
+      puts "Narrator: #{@@player_name}, you are going to need to discover what is the best method to defeat this miniboss."
       gets
-      puts "Do so, and you will be ever closer to saving your beloved village."
+      puts "Narrator: Do so, and you will be ever closer to saving your beloved village."
       gets
-      puts "You may choose to: Attack, Block, Heal, or ??? "
+      puts "Narrator: During battle you have four options:"
       gets
-      puts "May you prevail..."
+      puts "Narrator: Attack, Block, Heal, or ??? "
+      gets
+      puts "Narrator: During a battle, type the name of the action you wish to do into the terminal."
+      gets
+      puts "Narrator: Well then,"
+      gets
+      puts "Narrator: May you prevail..."
+      gets
+      puts "Narrator: Your village, your people, they are waiting!"
+      gets
+      puts "Narrator: Mwaha,ha,--ha!"
       gets
     end
   end
