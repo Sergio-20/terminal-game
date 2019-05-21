@@ -13,17 +13,24 @@ class RunGame < Mechanics
   # -------------------Battle System--------------------
     def battle_system
 
-      until(@@is_player_turn == false)
-        @@player_obj.user_abilities()
-        break
-      end
-      if @@bosses_defeated == 0
-        until(@@is_player_turn == true)
+        until(@@is_player_turn == false && @@enemy_hp > 2)
+          @@player_obj.user_abilities()
+          break
+        end
+
+        until(@@is_player_turn == true && @@player_hp > 1)
           @@enemy_obj.enemy_decision_first_boss()
           break
         end
-      end  
-      battle_system()
+
+      if @@player_hp > 1 && @@enemy_hp > 2
+        battle_system()
+      elsif @@player_hp <= 1
+        @@player_obj.user_abilities()
+      elsif @@enemy_hp <= 2
+        @@enemy_obj.enemy_decision_first_boss()
+      end
+
     end
 
 end

@@ -17,7 +17,7 @@ class Mechanics
   @@enemy_hp_original = 300
   @@enemy_level = 10
   @@enemy_luck = 0
-  @@enemy_name = "enemy"
+  @@enemy_name = "Crazy Wolf"
 
   # Player Variables
   @@player_attack_streak = 0
@@ -53,7 +53,7 @@ class Mechanics
         @@gameState = false
         game_exit()
       else
-        puts "I\'m sorry I could not comprehend that. Could you reword that please?"
+        puts "I\'m sorry that could not be comprehended. Could you reword that please?"
         puts "---"
         game_start()
       end
@@ -64,9 +64,9 @@ class Mechanics
     greetings = ['hello', 'greetings', 'welcome back hero', 'good day', 'welcome back', 'glad your back', 'Ready to take arms?', 'Time to fight!', 'Let\'s head out!']
     randomGreeting = rand() * greetings.length
 
-    puts "Welcome to Defeat the Dragon!"
+    puts "Mysterious Voice 1: Welcome to Defeat the Dragon!"
     gets
-    puts "What is thy name?"
+    puts "Mysterious Voice 1: What is thy name?"
 
     @@player_name = gets.chomp
 
@@ -77,16 +77,16 @@ class Mechanics
       if @@returning_player == true && @@gameState == true
         puts( greetings[randomGreeting].to_s.capitalize + " " + @@player_name + "!" )
         gets
-        puts( "Your current level is: " + @@player_level.to_s + "." )
+        puts( "Narrator: Yer current level is: " + @@player_level.to_s + "." )
         gets
 
       elsif (@@returning_player == false && @@gameState == true) && @@player_name != ""
         @@returning_player = false;
-        puts( "I welcome you " + @@player_name +  ", to Defeat the Dragon!" )
+        puts( "Mysterious Voice 1: I welcome you " + @@player_name +  ", to Defeat the Dragon!" )
         gets
-        puts( "In order to defeat the dragon you must first prove yourself by defeating two minibosses!" )
+        puts( "Mysterious Voice 1: In order to defeat the dragon you must first prove yourself by defeating two minibosses!" )
         gets
-        puts( "Your current level is: " + @@player_level.to_s + "." )
+        puts( "Mysterious Voice 1: Your current level is: " + @@player_level.to_s + "." )
         gets
 
       end
@@ -95,61 +95,61 @@ class Mechanics
 
   def first_confirmation
 
-    puts( "Are you ready to save your village " + @@player_name + "?" )
+    puts( "Mysterious Voice 1: Are you ready to save your village " + @@player_name + "?" )
     @@response = gets.chomp
     # *************Start of First Layer**************
     if @@response == "y" || @@response == "yes"
-      puts "Ho ho!"
+      puts "Mysterious Voice 1: Ho ho!"
       gets
-      puts "A mighty one, indeed!"
+      puts "Mysterious Voice 1: A mighty one, indeed!"
       gets
 
     elsif @@response == "n" || @@response == "no"
       # *************Start of Second Layer**************
       if @@counter == 0
-        puts "Hm?"
+        puts "Mysterious Voice 1: Hm?"
         @@counter += 1
         gets
         first_confirmation()
       elsif @@counter == 1
-        puts "Say that again. I dare ye..."
+        puts "Mysterious Voice 1: Say that again. I dare ye..."
         @@counter += 1
         gets
         first_confirmation()
       elsif @@counter == 2
-        puts "Are you sure?"
+        puts "Mysterious Voice 1: Are you sure?"
         @@response = gets.chomp
         # *************Start of Third Layer**************
         if @@response == "y" || @@response == "yes"
-          puts "Are you sure that you\'re sure?"
+          puts "Mysterious Voice 1: Are you sure that you\'re sure?"
           @@response = gets.chomp
           # *************Start of Fourth Layer**************
           if @@response == "y" || @@response == "yes"
-            puts "YOU COWARD!!!"
+            puts "Mysterious Voice 1: YOU COWARD!!!"
             gets
-            puts "TAKE THIS YA PATUNIA!"
+            puts "Mysterious Voice 1: TAKE THIS YA COWARD!"
             gets
             puts "------"
             gets
-            puts "You are dead."
+            puts "Mysterious Voice 1: You are dead."
             gets
-            puts "Cause of death: cowardliness"
+            puts "Mysterious Voice 1: Cause of death: cowardliness"
             gets
             puts"\n\n"
             game_start()
             greet()
             first_confirmation()
           else
-            puts "'Tis alright. Thou art just bewildered.'"
+            puts "Mysterious Voice 1: 'Tis alright. Thou art just bewildered.'"
             gets
-            puts "Let\'s begin!"
+            puts "Mysterious Voice 1: Let\'s begin!"
             gets
           end
           # *************End of Fourth Layer**************
         else
-          puts "'Tis alright. Thou art just bewildered.'"
+          puts "Mysterious Voice 1: 'Tis alright. Thou art just bewildered.'"
           gets
-          puts "Let\'s begin!"
+          puts "Mysterious Voice 1: Let\'s begin!"
           gets
         end
         # *************End of Third Layer**************
@@ -158,7 +158,7 @@ class Mechanics
     elsif @@response == "e" ||  @@response == "exit" || @@response == "q" || @@response == "quit"
       game_exit()
     else
-      puts "What are you saying lad? I can\'t understand you!"
+      puts "Mysterious Voice 1: What are ye saying lad? I can\'t understand ye!"
       gets
       first_confirmation()
     end
@@ -168,9 +168,9 @@ class Mechanics
 
   def name_check_nil
     while @@player_name == "" || @@player_name == nil
-      puts "Please type something at least."
+      puts "Mysterious Voice 1: Please type something at least."
       gets
-      puts "What is thy name?"
+      puts "Mysterious Voice 1: What is thy name?"
       @@player_name = gets.chomp
     end
   end
@@ -180,9 +180,9 @@ class Mechanics
   # ----------First Boss-----------
   def first_boss_prologue
     if @@exited_game == false && @@level_counter == 0
-      puts "Thou art wondering, \"Who art thou?\""
+      puts "Mysterious Voice 1: Thou art wondering, \"Who art thou?\""
       gets
-      puts "Well #{@@player_name}, I am known as: Narrator."
+      puts "Mysterious Voice 1: Well #{@@player_name}, I am known as: Narrator."
       gets
       puts "Narrator: I do just as I am named. I narrate."
       gets
@@ -202,29 +202,29 @@ class Mechanics
       gets
       puts "Narrator: I see, well then,"
       gets
-      puts "Narrator: Listen lad, you are up against a, \"Crazy Wolf\" with 300 HP."
+      puts "Narrator: Listen lad, ye are up against a, \"Crazy Wolf\" with 300 HP."
       gets
-      puts "Narrator: He has a withdrawn play style, and seeks to engulf your village."
+      puts "Narrator: He has a withdrawn play style, and seeks to engulf yer village."
       gets
       puts "Narrator: About Gameplay..."
       gets
-      puts "Narrator: During battle you have five options:"
+      puts "Narrator: During battle ye have five options:"
       gets
       puts "Narrator: Attack, Waste Turn, Heal, ???, or More Options "
       gets
-      puts "Narrator: During a battle, type the name of the action you wish to do into the terminal."
+      puts "Narrator: During a battle, type the name of the action ye wish to do into the terminal."
       gets
-      puts "Narrator: Select \"Attack\" to lower your enemy\'s HP!"
+      puts "Narrator: Select \"Attack\" to lower yer enemy\'s HP!"
       gets
-      puts "Narrator: Choose \"Waste Turn\" in order to increase your luck."
+      puts "Narrator: Choose \"Waste Turn\" in order to increase yer luck."
       gets
-      puts "Narrator: It is quite useful, laddie. It will increase the amount of health you receive upon using the \"Heal\" command!"
+      puts "Narrator: It is quite useful, laddie. It will increase the amount of health ye receive upon using the \"Heal\" command!"
       gets
-      puts "Narrator: Choosing \"Heal\" will increase your HP."
+      puts "Narrator: Choosing \"Heal\" will increase yer HP."
       gets
-      puts "Narrator: As for \"???\", I do not know what that is for.....nor how to use it.....maybe you can figure it out, laddie?"
+      puts "Narrator: As for \"???\", I do not know what that is for.....nor how to use it.....maybe ye can figure it out, laddie?"
       gets
-      puts "Narrator: Finally, \"More Options\" shows you information about some of yer stats."
+      puts "Narrator: Finally, \"More Options\" shows ye information about some of yer stats."
       gets
       puts "Narrator: Well then,"
       gets
@@ -232,11 +232,11 @@ class Mechanics
       gets
       puts "Narrator: That, \"Crazy Wolf\" has a nasty habit of healing itself."
       gets
-      puts "Narrator: You will need to figure out a way to counter that habit."
+      puts "Narrator: Ye will need to figure out a way to counter that habit."
       gets
-      puts "Narrator: #{@@player_name}, you are going to need to overcome this miniboss."
+      puts "Narrator: #{@@player_name}, ye are going to need to overcome this miniboss."
       gets
-      puts "Narrator: Do so, and you will be ever closer to saving your beloved village."
+      puts "Narrator: Do so, and ye will be ever closer to saving yer beloved village."
       gets
       puts "Narrator: Now,..."
       gets
@@ -257,8 +257,8 @@ class Mechanics
   end
 
   def first_boss_epilogue
-    if @@exited_game == false && @@level_counter == 0
-      puts "First Boss code placeholder..."
+    if (@@bosses_defeated == 1)
+      puts "First Boss code placeholder Epilogue..."
     end
   end
 
@@ -266,38 +266,38 @@ class Mechanics
 
   def second_boss_prologue
     if @@exited_game == false && @@level_counter == 1
-      puts "Second Boss code placeholder..."
+      puts "Second Boss code placeholder Prologue..."
     end
   end
 
   def second_boss_battle
     if @@exited_game == false && @@level_counter == 1
-      puts "Second Boss code placeholder..."
+      puts "Second Boss code placeholder Battle..."
     end
   end
 
   def second_boss_epilogue
     if @@exited_game == false && @@level_counter == 2
-      puts "Second Boss code placeholder..."
+      puts "Second Boss code placeholder Epilogue..."
     end
   end
 
   # ----------Final Boss-----------
   def final_boss_prologue
     if @@exited_game == false && @@level_counter == 2
-      puts "Final Boss code placeholder..."
+      puts "Final Boss code placeholder Prologue..."
     end
   end
 
   def final_boss_battle
     if @@exited_game == false && @@level_counter == 2
-      puts "Final Boss code placeholder..."
+      puts "Final Boss code placeholder Battle..."
     end
   end
 
   def final_boss_epilogue
     if @@exited_game == false && @@level_counter == 3
-      puts "Final Boss code placeholder..."
+      puts "Final Boss code placeholder Epilogue..."
     end
   end
 
