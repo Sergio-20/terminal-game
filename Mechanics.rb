@@ -1,7 +1,7 @@
 class Mechanics
 
-  attr_accessor(:player_name, :player_level, :player_hp, :returning_player, :is_player_turn, :enemy_name,
-     :enemy_level, :enemy_hp, :gameState, :response, :counter)
+  attr_accessor(:player_name, :player_level, :player_hp, :player_hp_original, :returning_player, :is_player_turn, :enemy_name,
+     :enemy_level, :enemy_hp, :enemy_hp_original, :gameState, :response, :counter)
 
   # Game Variables
   @@bosses_defeated = 0
@@ -13,13 +13,18 @@ class Mechanics
   @@response = ""
 
   # Enemy Variables
-  @@enemy_hp = 100
+  @@enemy_hp = 300
+  @@enemy_hp_original = 300
   @@enemy_level = 10
+  @@enemy_luck = 0
   @@enemy_name = "enemy"
 
   # Player Variables
+  @@player_attack_streak = 0
   @@player_hp = 100
+  @@player_hp_original = 100
   @@player_level = 1
+  @@player_luck = 0
   @@player_name = ""
   @@returning_player = false
 
@@ -33,7 +38,7 @@ class Mechanics
   end
 
   def game_start
-    puts "Welcome to Defeat the Dragon Online!"
+    puts "Welcome to Defeat the Dragon!"
     puts "Type \'e\',  \'exit\',  \'q\', or \'quit\' to stop the game."
     puts "Press the \"Enter\" key to advance the story dialogue."
     puts "Are you a returning player? (y/n)"
@@ -59,32 +64,38 @@ class Mechanics
     greetings = ['hello', 'greetings', 'welcome back hero', 'good day', 'welcome back', 'glad your back', 'Ready to take arms?', 'Time to fight!', 'Let\'s head out!']
     randomGreeting = rand() * greetings.length
 
-    puts "Welcome to Defeat the Dragon Online!"
+    puts "Welcome to Defeat the Dragon!"
+    gets
     puts "What is thy name?"
 
     @@player_name = gets.chomp
 
-    if @@returning_player == true && @@gameState == true
-      puts( greetings[randomGreeting].to_s.capitalize + " " + @@player_name + "!" )
-      gets
-      puts( "Your current level is: " + @@player_level.to_s + "." )
-      gets
+    if @@player_name == "" || @@player_name == nil
+      name_check_nil()
+    else
 
-    elsif (@@returning_player == false && @@gameState == true) && @@player_name != ""
-      @@returning_player = false;
-      puts( "I welcome you " + @@player_name +  ", to Defeat the Dragon Online!" )
-      gets
-      puts( "In order to defeat the dragon you must first prove yourself by defeating two minibosses!" )
-      gets
-      puts( "Your current level is: " + @@player_level.to_s + "." )
-      gets
+      if @@returning_player == true && @@gameState == true
+        puts( greetings[randomGreeting].to_s.capitalize + " " + @@player_name + "!" )
+        gets
+        puts( "Your current level is: " + @@player_level.to_s + "." )
+        gets
+
+      elsif (@@returning_player == false && @@gameState == true) && @@player_name != ""
+        @@returning_player = false;
+        puts( "I welcome you " + @@player_name +  ", to Defeat the Dragon!" )
+        gets
+        puts( "In order to defeat the dragon you must first prove yourself by defeating two minibosses!" )
+        gets
+        puts( "Your current level is: " + @@player_level.to_s + "." )
+        gets
+
+      end
     end
-
   end
 
   def first_confirmation
 
-    puts( "Are you ready " + @@player_name + "?" )
+    puts( "Are you ready to save your village " + @@player_name + "?" )
     @@response = gets.chomp
     # *************Start of First Layer**************
     if @@response == "y" || @@response == "yes"
@@ -148,10 +159,20 @@ class Mechanics
       game_exit()
     else
       puts "What are you saying lad? I can\'t understand you!"
+      gets
       first_confirmation()
     end
     # *************End of First Layer**************
 
+  end
+
+  def name_check_nil
+    while @@player_name == "" || @@player_name == nil
+      puts "Please type something at least."
+      gets
+      puts "What is thy name?"
+      @@player_name = gets.chomp
+    end
   end
 
   # -------------------Boss Dialogues--------------------
@@ -165,25 +186,63 @@ class Mechanics
       gets
       puts "Narrator: I do just as I am named. I narrate."
       gets
-      puts "Narrator: Listen up, you are up against a, \"Crazy Wolf\" with 300 HP."
+      puts "Narrator: What a surprise, eh?"
       gets
-      puts "Narrator: He has an aggresive play style and can withstand critical damage."
+      puts "Narrator: ....."
       gets
-      puts "Narrator: #{@@player_name}, you are going to need to discover what is the best method to defeat this miniboss."
+      puts "#{@@player_name}: ....."
       gets
-      puts "Narrator: Do so, and you will be ever closer to saving your beloved village."
+      puts "Narrator: ....."
+      gets
+      puts "#{@@player_name}: ....."
+      gets
+      puts "Narrator: No laugh, laddie? Not even a smile?"
+      gets
+      puts "#{@@player_name}: ....."
+      gets
+      puts "Narrator: I see, well then,"
+      gets
+      puts "Narrator: Listen lad, you are up against a, \"Crazy Wolf\" with 300 HP."
+      gets
+      puts "Narrator: He has a withdrawn play style, and seeks to engulf your village."
+      gets
+      puts "Narrator: About Gameplay..."
       gets
       puts "Narrator: During battle you have five options:"
       gets
-      puts "Narrator: Attack, Block, Heal, ???, or more options "
+      puts "Narrator: Attack, Waste Turn, Heal, ???, or More Options "
       gets
       puts "Narrator: During a battle, type the name of the action you wish to do into the terminal."
       gets
+      puts "Narrator: Select \"Attack\" to lower your enemy\'s HP!"
+      gets
+      puts "Narrator: Choose \"Waste Turn\" in order to increase your luck."
+      gets
+      puts "Narrator: It is quite useful, laddie. It will increase the amount of health you receive upon using the \"Heal\" command!"
+      gets
+      puts "Narrator: Choosing \"Heal\" will increase your HP."
+      gets
+      puts "Narrator: As for \"???\", I do not know what that is for.....nor how to use it.....maybe you can figure it out, laddie?"
+      gets
+      puts "Narrator: Finally, \"More Options\" shows you information about some of yer stats."
+      gets
       puts "Narrator: Well then,"
       gets
-      puts "Narrator: May you prevail..."
+      puts "Narrator: A bit of a warning before the hero departs..."
       gets
-      puts "Narrator: Your village, your people, they are waiting!"
+      puts "Narrator: That, \"Crazy Wolf\" has a nasty habit of healing itself."
+      gets
+      puts "Narrator: You will need to figure out a way to counter that habit."
+      gets
+      puts "Narrator: #{@@player_name}, you are going to need to overcome this miniboss."
+      gets
+      puts "Narrator: Do so, and you will be ever closer to saving your beloved village."
+      gets
+      puts "Narrator: Now,..."
+      gets
+      puts "Narrator: May ye prevail..."
+      gets
+      puts "Narrator: Yer village, yer people, they are waiting!"
       gets
       puts "Narrator: Mwaha,ha,--ha!"
       gets

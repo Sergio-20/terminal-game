@@ -17,10 +17,12 @@ class RunGame < Mechanics
         @@player_obj.user_abilities()
         break
       end
-      until(@@is_player_turn == true)
-        @@enemy_obj.enemy_decision()
-        break
-      end
+      if @@bosses_defeated == 0
+        until(@@is_player_turn == true)
+          @@enemy_obj.enemy_decision_first_boss()
+          break
+        end
+      end  
       battle_system()
     end
 
