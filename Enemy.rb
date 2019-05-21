@@ -9,7 +9,8 @@ class Enemy < Mechanics
     if @@enemy_hp > 0
 
       decisions = ['attack', 'block', 'heal']
-      choice = rand() * decisions.length
+      range = (rand() * decisions.length) + 1
+      choice = decisions[range]
 
       if choice == 'attack'
         @@is_player_turn = true

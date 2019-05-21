@@ -173,9 +173,9 @@ class Mechanics
       gets
       puts "Narrator: Do so, and you will be ever closer to saving your beloved village."
       gets
-      puts "Narrator: During battle you have four options:"
+      puts "Narrator: During battle you have five options:"
       gets
-      puts "Narrator: Attack, Block, Heal, or ??? "
+      puts "Narrator: Attack, Block, Heal, ???, or more options "
       gets
       puts "Narrator: During a battle, type the name of the action you wish to do into the terminal."
       gets

@@ -15,11 +15,13 @@ class RunGame < Mechanics
 
       until(@@is_player_turn == false)
         @@player_obj.user_abilities()
+        break
       end
       until(@@is_player_turn == true)
         @@enemy_obj.enemy_decision()
+        break
       end
-
+      battle_system()
     end
 
 end

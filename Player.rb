@@ -7,8 +7,10 @@ class Player < Mechanics
   def user_abilities
 
     puts ""
+    puts "#{@@player_name} it\'s your turn!"
     puts "What will you do?"
-    puts "Attack, Block, Heal, or ???"
+    puts ""
+    puts "Attack, Block, Heal, ???, or more options"
     choice = gets.chomp.downcase
 
 
@@ -44,6 +46,30 @@ class Player < Mechanics
         puts "The Final Boss has his health depleted to zero!"
       else
         puts "You need to defeat two bosses, and undergo a transformation!"
+        user_abilities()
+      end
+    elsif choice == "more options"
+      @@is_player_turn = true
+      puts "More Options > Show Health, Show Level, Show Attack"
+      choice = gets.chomp.downcase
+      if choice == "show health"
+        puts "#{@@player_name}\'s health is: #{@@player_hp}"
+        gets
+        user_abilities()
+        gets
+      elsif choice == "show level"
+        puts "#{@@player_name}\'s level is: #{@@player_level}"
+        gets
+        user_abilities()
+        gets
+      elsif choice == "show attack"
+        attack_lvl = (@@enemy_hp * 0.5) + (@@player_level * @@player_level)
+        puts "#{@@player_name}\'s attack is: (@@enemy_hp * 0.5) + #{attack_lvl}"
+        gets
+        user_abilities()
+        gets
+      else
+        puts "Type your choice into the terminal!"
         user_abilities()
       end
     else
