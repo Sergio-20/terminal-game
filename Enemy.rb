@@ -29,7 +29,7 @@ class Enemy < Mechanics
           else
             puts "Narrator: #{@@player_name}\'s health is now: #{@@player_hp}"
             gets
-          end  
+          end
         end
       elsif choice == 'waste turn'
         @@is_player_turn = true
@@ -54,15 +54,29 @@ class Enemy < Mechanics
           enemy_decision_first_boss()
         end
       end
-    elsif @@enemy_hp <= 2
+    elsif @@enemy_hp <= 2 && @@bosses_defeated < 1
       puts "Narrator: #{@@enemy_name} has been defeated!"
       @@bosses_defeated += 1
+      player_level_up()
     end
 
   end
 
   def enemy_health_system
     @@enemy_hp = @@enemy_hp * @@enemy_level
+  end
+
+  def player_level_up
+    if @@bosses_defeated >= 1
+      @@player_level += 1
+      gets
+      puts "#{@@player_name}: Woah I leveled up!"
+      gets
+      puts "-------"
+      gets
+      puts "Narrator: You are now level:  #{@@player_level}!"
+      gets
+    end
   end
 
 end

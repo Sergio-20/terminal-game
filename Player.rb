@@ -23,11 +23,12 @@ class Player < Mechanics
       if choice == 'attack'
         @@is_player_turn = false
         if @@player_attack_streak == 4
-          @@enemy_hp = (@@enemy_hp).abs - ( ( (@@enemy_hp * 100) / @@enemy_hp_original ).ceil * 2 ).abs
-          @@player_attack_streak = 0 
+          @@enemy_hp = (@@enemy_hp).abs - ( ( (@@enemy_hp * 100) / @@enemy_hp_original ).ceil * 2.5 ).abs
+          @@player_attack_streak = 0
         else
-          @@enemy_hp = @@enemy_hp - ( (@@enemy_hp * 100) / @@enemy_hp_original ).ceil
+          @@enemy_hp = @@enemy_hp - ( (@@enemy_hp * 100) / @@enemy_hp_original ).ceil + @@player_luck
           @@player_attack_streak += 1
+          @@player_luck = 0
         end
         puts "Narrator: #{@@player_name} has chosen to attack!"
         gets
@@ -114,7 +115,7 @@ class Player < Mechanics
       gets
       puts "-----"
       gets
-      game_start()
+      puts "exiting... Your people need you, please try again!"
       gets
     end
 
@@ -122,15 +123,6 @@ class Player < Mechanics
 
   def user_health_system
     @@player_hp = @@player_hp * @@player_level * @@player_level
-  end
-
-  def level_up
-    if @@bosses_defeated >= 1
-      @@player_level += 1
-      puts "#{@@player_name}: Woah I leveled up!"
-      puts "-------"
-      puts "Narrator: You are now level: " + @@player_level + "!"
-    end
   end
 
 end

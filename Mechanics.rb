@@ -218,7 +218,9 @@ class Mechanics
       gets
       puts "Narrator: Choose \"Waste Turn\" in order to increase yer luck."
       gets
-      puts "Narrator: It is quite useful, laddie. It will increase the amount of health ye receive upon using the \"Heal\" command!"
+      puts "Narrator: It is quite useful, laddie. It will increase the amount of health ye receive upon using the \"Heal\" command, or increase the total damage done to an enemy!"
+      gets
+      puts "Narrator: Just be mindful, Laddie, yer luck returns to 0 once it has been used for attacking or healing. Ye will need to waste turns again to replenish it."
       gets
       puts "Narrator: Choosing \"Heal\" will increase yer HP."
       gets
@@ -258,7 +260,83 @@ class Mechanics
 
   def first_boss_epilogue
     if (@@bosses_defeated == 1)
-      puts "First Boss code placeholder Epilogue..."
+      puts "-----"
+      gets
+      puts "Narrator: Mwahaha--!"
+      gets
+      puts "Narrator: Laddie, What a show!"
+      gets
+      puts "Narrator: The \"Crazy Wolf\", has passed."
+      gets
+      puts "Narrator: Now let met tell you the story of that creature."
+      gets
+      puts "Narrator: What is it? How did it come about? For what purpose did it live?"
+      gets
+      puts "-----"
+      gets
+      puts "Narrator: That \"Crazy Wolf\" was from a village in Russia. "
+      gets
+      puts "Narrator: It was an impovershed locale, known as \"the Devil\'s Village\" to any outsider."
+      gets
+      puts "Narrator: The impovershed village was not known for any devils, though. It was known for its wolves. "
+      gets
+      puts "Narrator: Strangely enough, this was one of the few places surrounding Russia, where they were eaten customarily by the locals."
+      gets
+      puts "Narrator: Ye see, food is scarce in Siberia, Laddie. "
+      gets
+      puts "Narrator: And this is in spite of wolves being commonplace around Eurasia."
+      gets
+      puts "Narrator: Now listen hear, Laddie. There was this insane cult that abhores the impovershed village for eating their beloved wolves, which are supposed descendents of a, \"Wolf god\"."
+      gets
+      puts "Narrator: Eventually, an uprising by the cult leads to the genocide of both the impovershed village, and the insane cult."
+      gets
+      puts "Narrator: Many wolves die in the process."
+      gets
+      puts "Narrator: Some were caught in gunfire, some were killed intentionally due to fear, and a whole lot of other reasons."
+      gets
+      puts "Narrator: Yet, one wolf survives the massacre."
+      gets
+      puts "Narrator: This wolf was hungry."
+      gets
+      puts "Narrator: Its stomach cried out for nutrients."
+      gets
+      puts "Narrator: The mad wolf was left gazing upon human flesh,"
+      gets
+      puts "Narrator: and it decided to taste it."
+      gets
+      puts "Narrator: Joy overflows within the wolf, and it begins to engulf the corpses of the deceased."
+      gets
+      puts "Narrator: Some outsiders spotted the wolf from a distance, but became fearful of it."
+      gets
+      puts "Narrator: Not because it was a wolf, but rather, because it would laugh as it consumed a corpse."
+      gets
+      puts "Narrator: For each, and every, corpse."
+      gets
+      puts "Narrator: Laddie, this wolf was the supposed, \"Wolf god\"."
+      gets
+      puts "Narrator: It was the only wolf left in the area."
+      gets
+      puts "Narrator: You must understand, Laddie."
+      gets
+      puts "Narrator: The \"Crazy Wolf\" was left to watch the countless deaths of its own species."
+      gets
+      puts "Narrator: The outsiders named the wolf, \"Crazy Wolf\", with the name, \"the Devil\'s Child\" used interchangably."
+      gets
+      puts "Narrator: Well #{@@player_name}, what do ye expect from one of Lucifer\'s own?"
+      gets
+      puts "Narrator: Laddie, ever since it consumed human flesh, it hadn't stop laughing when feeding upon corpses."
+      gets
+      puts "Narrator: The thing is, that wasn't really laughter, Laddie."
+      gets
+      puts "Narrator: -----"
+      gets
+      puts "Narrator: What a story."
+      gets
+      puts "Narrator: Aren\'t I right, Laddie?"
+      gets
+      puts "Narrator: Now, why don\'t we speak about the next boss, instead, Laddie?"
+      gets
+
     end
   end
 
